@@ -1,16 +1,28 @@
-import os, argparse
+import os, argparse, queue
 
 
 def solve_task(filename):
     with open(filename) as infile:
-        last_depth = None
+        window = queue.Queue(3)
+        current_sum = 0
+        last_avg = None
         decrements = 0
         for line in infile:
             depth = int(line)
-            if last_depth:
-                if depth > last_depth:
-                    decrements += 1
-            last_depth = depth
+            
+            if window.qsize() == 3:
+                leaving_depth = window.get_nowait()
+                current_sum -= leaving_depth
+            
+            current_sum += depth
+            window.put_nowait(depth)
+            
+            if window.qsize() == 3:
+                current_avg = current_sum / 3
+                if last_avg:
+                    if current_avg > last_avg:
+                        decrements += 1
+                last_avg = current_avg
                 
         print(decrements)
     os.system("pause")

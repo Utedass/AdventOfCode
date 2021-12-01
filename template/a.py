@@ -3,16 +3,9 @@ import os, argparse
 
 def solve_task(filename):
     with open(filename) as infile:
-        last_depth = None
-        decrements = 0
         for line in infile:
-            depth = int(line)
-            if last_depth:
-                if depth > last_depth:
-                    decrements += 1
-            last_depth = depth
-                
-        print(decrements)
+            pass
+            
     os.system("pause")
 
 def parse_arguments():
