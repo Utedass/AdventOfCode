@@ -3,7 +3,8 @@ import os, argparse
 
 def solve_task(filename):
     with open(filename) as infile:
-        for line in infile:
+        for raw_line in infile:
+            line = raw_line.rstrip()
             pass
             
     os.system("pause")
