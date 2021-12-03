@@ -10,7 +10,7 @@ def solve_task(filename):
     os.system("pause")
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description="Script that toggles output of a Tenma PSU",epilog="Have a nice day!")
+    parser = argparse.ArgumentParser(description="Script that solves the case",epilog="Have a nice day!")
     parser.add_argument('filename', nargs='?', default="infile.txt", help='Input file')
     args = parser.parse_args()
     return args
