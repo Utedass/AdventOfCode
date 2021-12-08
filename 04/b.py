@@ -4,6 +4,7 @@ import numpy as np
 class bingo_brick:
     brick = None
     marks = None
+    has_bingo = None 
 
     def __init__(self):
         self.marks = np.ones((5,5), dtype=bool)
@@ -20,12 +21,16 @@ class bingo_brick:
         self.marks[self.brick == mark] = False
     
     def bingo(self):
+        if self.has_bingo:
+            return True
         vert = self.marks.sum(axis = 0) == 0
         if vert.any():
+            self.has_bingo == True
             return True
         
         hor = self.marks.sum(axis = 1) == 0
         if hor.any():
+            self.has_bingo == True
             return True
             
         return False
@@ -68,26 +73,31 @@ def solve_task(filename):
     # Time to play some bingo!
     
     # Iterate the mark announcements
-    winning_brick = None
-    winning_mark = None
+    losing_brick = None
+    losing_mark = None
+    boards_won = 0
     for mark in marks:
         print("Draws number: " + str(mark))
         for brick in bingo_bricks:
+            if brick.bingo():
+                continue
             brick.mark(mark)
             if brick.bingo():
-                winning_brick = brick
-                winning_mark = mark
-                break
+                if boards_won == len(bingo_bricks)-1:
+                    print("The last board just got bingo!")
+                    losing_brick = brick
+                    losing_mark = mark
+                boards_won += 1
                 
 
-        if winning_brick:
+        if losing_brick:
             break
 
-    if winning_brick:
-        print(winning_brick)
+    if losing_brick:
+        print(losing_brick)
         
-    print("Brick score: " + str(winning_brick.score()) + "\nLast mark: " + str(winning_mark))
-    print("Total score: " + str(winning_brick.score() * winning_mark))
+    print("Brick score: " + str(losing_brick.score()) + "\nLast mark: " + str(losing_mark))
+    print("Total score: " + str(losing_brick.score() * losing_mark))
         
     os.system("pause")
 
