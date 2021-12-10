@@ -6,12 +6,12 @@ def solve_task(filename):
     depth = 0
     
     match_string = r"(?P<command>[a-z]*) (?P<distance>\d*)"
-    matcher = re.compile(match_string)
+    #matcher = re.compile(match_string)
     
     with open(filename) as infile:
-        for raw_line in infile:
-            line = raw_line.rstrip()
-            m = matcher.match(line)
+        for line in infile:
+            #m = matcher.match(line)
+            m = re.search(match_string, line)
             command = m.group('command')
             distance = int(m.group('distance'))
             
