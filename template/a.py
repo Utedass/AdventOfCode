@@ -11,7 +11,7 @@ def solve_task(filename):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Script that solves the case",epilog="Have a nice day!")
-    parser.add_argument('filename', nargs='?', default="infile.txt", help='Input file')
+    parser.add_argument('filename', nargs='?', default="example.txt", help='Input file')
     args = parser.parse_args()
     return args
 
