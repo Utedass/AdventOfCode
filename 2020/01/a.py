@@ -11,35 +11,15 @@ def solve_task(filename):
     numbers.sort()
 
     target = 2020
-    biggerIndex = len(numbers)-1
-    smallerIndex = 0
-    solved = False
     
-    while not solved:
-        smaller = numbers[smallerIndex]
-        bigger = numbers[biggerIndex]
-        #print("Smaller: " + str(smaller) + ", Bigger: " + str(bigger))
-        if((smaller+bigger) == target):
-            soved = True
-            print("Answer: " + str(smaller*bigger))
-            break
-        if(bigger < target/2):
-            print("No solusion found")
-            break
+    for a in range(len(numbers)):
+        for b in range(a+1, len(numbers)):
+            x = numbers[a]
+            y = numbers[b]
 
-        if(bigger + numbers[smallerIndex+1] > target):
-            #print("Decreasing bigger")
-            biggerIndex -= 1
-            #smallerIndex = 0
-            if(biggerIndex < 0):
-                print("No solusion found")
-                break
-        else:
-            #print("Increasing smaller")
-            smallerIndex += 1
-            if (smallerIndex >= len(numbers)):
-                print("No solusion found")
-                break
+            if(x+y == target):
+                print(f"X: {x}, Y: {y}")
+                print(f"Answer: {x*y}")
 
     #os.system("pause")
 
