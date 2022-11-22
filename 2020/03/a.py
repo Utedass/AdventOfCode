@@ -3,15 +3,12 @@ tree = '#'
 
 def hit_function(map, x, y):
     wrapped_x = x % len(map[0])
-
-    if (map[y][wrapped_x] == tree):
-        return True
-    else:
-        return False
+    print(wrapped_x)
+    return map[y][wrapped_x] == tree
 
 def check_stage(map, n):
-    x = 3*n
-    y = n
+    x = 3*(n+1)
+    y = n+1
     return hit_function(map, x, y)
 
 def solve_task(filename):
@@ -22,7 +19,7 @@ def solve_task(filename):
             toboggan_slope.append(line)
 
     trees_hit = 0
-    for n in range(len(toboggan_slope)):
+    for n in range(len(toboggan_slope)-1):
         if check_stage(toboggan_slope, n):
             trees_hit += 1
     
