@@ -1,7 +1,8 @@
 import os, argparse
 
 def solve_task(lines):
-    pass
+    for line in lines:
+        pass
 
 def read_lines(filename):
     lines = []
