@@ -1,13 +1,15 @@
 import os, argparse
 
+def solve_task(lines):
+    pass
 
-def solve_task(filename):
+def read_lines(filename):
+    lines = []
     with open(filename) as infile:
         for raw_line in infile:
             line = raw_line.rstrip()
-            pass
-            
-    os.system("pause")
+            lines.append(line)
+    return lines
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Script that solves the case",epilog="Have a nice day!")
@@ -17,7 +19,8 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
-    solve_task(args.filename)
+    lines = read_lines(args.filename)
+    solve_task(lines)
 
 if __name__ == "__main__":
     main()
