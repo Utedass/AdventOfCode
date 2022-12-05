@@ -1,18 +1,19 @@
 import os, argparse
 
+def get_unique(line):
+    uniques = {}
+    for c in line:
+        uniques[c] = 1
+    return [d.key for d in uniques.items]
+
+
 def solve_task(lines):
     duplicate_objects = []
     priority_sum = 0
-    possible_group_items = {}
+    unique_group_items = {}
     member_counter = 0
     for line in lines:
-        half_index = len(line)//2
-        dupes_in_this_pack = {}
-        for i in line[:half_index]:
-            if i in line[half_index:] and i not in dupes_in_this_pack:
-                print(f"{i} is in {line[half_index:]}, first half {line[:half_index]}")
-                priority_sum += get_priority(i)
-                dupes_in_this_pack[i] = True
+        pass
     print(duplicate_objects)
     print(priority_sum)
 
